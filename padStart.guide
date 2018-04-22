@@ -1,0 +1,32 @@
+const padStart=(t,a,b)=>{//inputString,targetLength,padString
+	let s=t,n=a>>0;
+	if(n>0 && b){
+		const l=s.length;
+		if(n>l){
+			let x=typeof b,i=(x=x!=='string'?x!=='number'?'':String(b):b).length;
+			if(i>0){//padStringLength
+				n-=l;
+				if(n>i){
+					i=n/i;
+					if(i>1){
+						x+=x.repeat(i);
+					};
+					s=x.slice(0,n)+s;
+				};
+			};
+		};
+	};
+	return s;
+};
+//=========================================================================================================================
+console.log(padStart('abc',1));//abc
+console.log(padStart('abc',10));//abc
+console.log(padStart('abc',10,''));//abc
+console.log(padStart('abc',10,{}));//abc
+console.log(padStart('abc',10,[]));//abc
+console.log(padStart('abc',6,'123465'));//abc
+console.log(padStart('abc',10,'foo'));//foofoofabc
+console.log(padStart('abc',8,'0'));//00000abc
+
+
+
